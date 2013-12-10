@@ -1,0 +1,19 @@
+String Kernel:
+	input x, y
+	S(y) = build_suffix_tree(y)
+	K = 0;
+	for each suffix sx of x
+		K += calculate_K(sx,y)
+
+calculate_K(x,S(y)):
+	K = 0
+	for each prefix px of x
+		K += W(px,S(y))
+	return K
+
+W(x,S(y)):
+	return weight(x)*frequency(x,S(y))
+
+frequency(x,S(y)):
+	find node n in S(y) corresponding to string x
+	return (Number of leaves of subtree rooted at node n)
